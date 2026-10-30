@@ -1,0 +1,240 @@
+/* House style — main #17375E ground #F3F6FA ink #1B2430 accent #E0A526  headings: Merriweather, serif body: Source Sans 3, sans-serif */
+
+/* =====================================================
+   BLOCK 1 — SHARED (house style, layout, phone)
+   Owner: Member 1. Keep rules here only if every page needs them.
+   ===================================================== */
+
+:root {
+  --main: #17375E;
+  --ground: #F3F6FA;
+  --ink: #1B2430;
+  --accent: #E0A526;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html { font-size: 100%; }
+
+body {
+  margin: 0;
+  background: var(--ground);
+  color: var(--ink);
+  font-family: "Source Sans 3", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  line-height: 1.6;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 18rem;
+  grid-template-areas:
+    "header header"
+    "main   aside"
+    "footer footer";
+  gap: 1.5rem 2rem;
+  min-height: 100vh;
+  grid-template-rows: auto 1fr auto;
+}
+
+header { grid-area: header; }
+main   { grid-area: main; padding: 0 0 1rem 1.5rem; max-width: 100%; }
+aside  { grid-area: aside; }
+footer { grid-area: footer; }
+
+img, input, select, textarea { max-width: 100%; }
+
+h1, h2, h3 {
+  font-family: Merriweather, Georgia, "Times New Roman", serif;
+  font-weight: 700;
+  line-height: 1.25;
+  color: var(--main);
+  margin: 0 0 0.75rem;
+}
+h1 { font-size: 2rem; }
+h2 { font-size: 1.4rem; margin-top: 2rem; }
+h3 { font-size: 1.15rem; }
+
+p { margin: 0 0 1rem; max-width: 70ch; }
+
+a { color: var(--main); text-underline-offset: 0.2em; }
+a:hover { background: var(--accent); color: var(--ink); }
+a:focus-visible, button:focus-visible, input:focus-visible,
+select:focus-visible, textarea:focus-visible {
+  outline: 3px solid var(--ink);
+  outline-offset: 2px;
+}
+
+/* header and nav */
+header {
+  background: var(--main);
+  color: var(--ground);
+  padding: 1.25rem 1.5rem 0;
+  border-bottom: 6px solid var(--accent);
+}
+.brand {
+  font-family: Merriweather, Georgia, serif;
+  font-weight: 700;
+  font-size: 1.75rem;
+  margin: 0;
+}
+.tagline { margin: 0 0 1rem; }
+
+nav ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem 0.5rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+nav a {
+  display: block;
+  padding: 0.6rem 0.9rem;
+  color: var(--ground);
+  text-decoration: none;
+  font-weight: 600;
+}
+nav a:hover { background: var(--accent); color: var(--ink); }
+nav a[aria-current="page"] { background: var(--accent); color: var(--ink); }
+
+/* aside */
+aside {
+  background: var(--accent);
+  color: var(--ink);
+  padding: 1.25rem;
+  margin: 0 1.5rem 1rem 0;
+  align-self: start;
+}
+aside h2 { margin-top: 0; font-size: 1.15rem; color: var(--ink); }
+aside a { color: var(--ink); font-weight: 600; }
+aside a:hover { background: var(--main); color: var(--ground); }
+
+/* footer */
+footer {
+  background: var(--main);
+  color: var(--ground);
+  padding: 1.25rem 1.5rem;
+}
+footer p { margin: 0; }
+
+/* cards (a row that wraps) */
+.cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin: 0 0 1.5rem;
+}
+.card {
+  flex: 1 1 14rem;
+  min-width: 0;
+  border: 2px solid var(--main);
+  padding: 1rem 1.1rem;
+  background: var(--ground);
+}
+.card p:last-child { margin-bottom: 0; }
+
+/* home hero */
+.hero {
+  border-left: 8px solid var(--accent);
+  padding: 0.5rem 0 0.5rem 1.25rem;
+  margin-bottom: 2rem;
+}
+.hero h1 { font-size: 2.25rem; }
+
+/* buttons */
+.button, button {
+  display: inline-block;
+  background: var(--main);
+  color: var(--ground);
+  border: 2px solid var(--main);
+  padding: 0.7rem 1.3rem;
+  font: inherit;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+}
+.button:hover, button:hover { background: var(--accent); color: var(--ink); }
+
+/* tables: the table slides, not the page */
+.table-scroll {
+  overflow-x: auto;
+  max-width: 100%;
+  margin-bottom: 1.5rem;
+}
+table {
+  border-collapse: collapse;
+  width: 100%;
+  min-width: 34rem;
+}
+caption {
+  text-align: left;
+  font-weight: 600;
+  padding-bottom: 0.5rem;
+}
+th, td {
+  border: 1px solid var(--main);
+  padding: 0.6rem 0.75rem;
+  text-align: left;
+  vertical-align: top;
+}
+thead th { background: var(--main); color: var(--ground); }
+tbody th { background: var(--ground); color: var(--ink); }
+
+/* =====================================================
+   BLOCK 2 — HEATHER (features.html and giving.html)
+   ===================================================== */
+
+.feature-cards .feature-card { flex: 1 1 18rem; }
+.feature-card h2 { font-size: 1.2rem; margin-top: 0; }
+.feature-note {
+  border-top: 2px solid var(--accent);
+  padding-top: 0.6rem;
+  font-weight: 600;
+}
+
+.giving-table td:first-child { font-weight: 600; }
+.giving-table { min-width: 40rem; }
+
+/* =====================================================
+   BLOCK 3 — NISSY (events.html, roles.html, contact.html)
+   ===================================================== */
+
+.programme td:first-child { font-weight: 600; white-space: nowrap; }
+
+form { max-width: 36rem; }
+form p { max-width: none; }
+label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 0.3rem;
+}
+input, select, textarea {
+  display: block;
+  width: 100%;
+  padding: 0.6rem 0.7rem;
+  border: 2px solid var(--main);
+  background: var(--ground);
+  color: var(--ink);
+  font: inherit;
+}
+textarea { resize: vertical; }
+
+/* =====================================================
+   PHONE — one media query, LAST in the file
+   ===================================================== */
+
+@media (max-width: 700px) {
+  body {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-areas:
+      "header"
+      "main"
+      "aside"
+      "footer";
+    gap: 1rem;
+  }
+  main { padding: 0 1rem 1rem; }
+  aside { margin: 0 1rem 1rem; }
+  header { padding: 1rem 1rem 0; }
+  footer { padding: 1rem; }
+  h1, .hero h1 { font-size: 1.6rem; }
+  .programme td:first-child { white-space: normal; }
+  nav a { padding: 0.55rem 0.7rem; }
+}
